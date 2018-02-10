@@ -1,0 +1,107 @@
+/ take the length of th word
+/display lenght of an element inside of an array
+/display the length as dashes so 4 length would display 4 dashes
+/for each right letter guessed display that letter in the proper spot of the word
+/itterate through the word to check if the key press is equal to a ltter in the word
+/string @0
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Harder Loop</title>
+</head>
+<body>
+
+    <div id="game">
+        <!-- Element to hold user's guess -->
+        <h2>User's guess:
+          <span id="user-guess"></span>
+        </h2>
+    </div>
+
+
+  <script type="text/javascript">
+
+   // var myFarm = ["chickens", "pigs", "cows", "horses", "ostriches"];
+
+   // for(var i = 0; i <myFarm.length; i++){
+
+     // if(myFarm[i][0].toLowerCase === "c" || myFarm[i][0].toLowerCase === "o"){
+      //  alert("starts with 'c' or 'o'");
+//}
+   // }
+    
+    var userHTML = document.getElementById('user-guess');
+    //make a function that will take an arguemenst and prints them out
+    function loopThrough(arr){
+      // we loop through the selected array
+      for( var k = 0; i < arr.length; i++){
+        // each time we print the value inside the array
+        console.log(arr[i]);
+      }
+    }
+
+    var hiddenWord = ["test","wordy","hardmode"];
+    //this is my word bank
+    console.log(hiddenWord);
+
+    var randomWord = Math.floor(Math.random() * hiddenWord.length);
+    //this will give me a random word from my word bank
+    
+    console.log(randomWord);
+    //test to see index comes up
+
+    var guessThis = hiddenWord[randomWord];
+    //takes a random array element from word bank
+    console.log(guessThis);
+
+    var hiddenWordLength = guessThis.length;
+    //returns the length of word chosen from the bank
+    console.log(hiddenWordLength);
+
+    var dashes = [];
+    //creates an empty array named dashes
+    for(var i = 0; i < hiddenWordLength; i++){
+      dashes.push("_");
+    }
+    // create a array the length of the hiddenword
+    console.log(dashes);
+
+    var hiddenWordKey = [];
+    for(var i = 0; i < guessThis.length; i++){
+      hiddenWordKey.push(guessThis.charAt(i));
+    }
+    //gets the word guessed, breaks the word into letters than adds letters to an array
+    console.log(hiddenWordKey);
+
+    document.onkeyup = function(event) {
+      // capture user input
+      var userChoice = event.key;
+      console.log(userChoice);
+      //logging what key is being pressed
+
+      for(var i = 0; i < hiddenWordKey.length; i++ ){
+        //this isnt showing up, try to figure out why it isnt iterating through the array
+        if(hiddenWordKey[i][0] === userChoice){
+          alert("you guessed a letter right");
+          dashes.splice((hiddenWordKey[i][0] === userChoice));
+          console.log(dashes);
+        }
+      }
+      userHTML.textContent = userChoice;
+    }
+
+
+
+
+
+  
+  </script>
+  
+</body>
+</html>
+
+
