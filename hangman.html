@@ -49,6 +49,17 @@
         console.log(arr[i]);
       }
     }
+
+    var restartGame = false;
+    var wrongChoice = 0;
+    
+    function newGame(bool){
+      if(restartGame === true){
+         var newRandomWord = Math.floor(Math.random() * hiddenWord.length);
+         randomWord = newRandomWord;
+         restartGame = false;
+      }
+    }
     var missedGuess = 0;
     var hiddenWord = ["test", "wordy", "hardmode"];
     //this is my word bank
@@ -81,10 +92,12 @@
     }
     // create a array the length of the hiddenword
     console.log(dashes);
+
     var hiddenWordKey = [];
     for (var i = 0; i < guessThis.length; i++) {
       hiddenWordKey.push(guessThis.charAt(i));
     }
+    dashedWordHTML.textContent = dashes.join(" ");
     //gets the word guessed, breaks the word into letters than adds letters to an array
     console.log(hiddenWordKey);
     document.onkeypress = function (event) {
@@ -92,6 +105,7 @@
       var userChoice = event.key;
       console.log(userChoice);
       //logging what key is being pressed
+      
       for (var i = 0; i < hiddenWordKey.length; i++) {
         //this isnt showing up, try to figure out why it isnt iterating through the array
         if (hiddenWordKey[i][0] === userChoice) {
@@ -101,19 +115,25 @@
         } else {
           wrongGuess.push(userChoice);
 
+          dashedWordHTML.textContent = dashes.join(" ");
         }
       }
       userHTML.textContent = userChoice;
-      var guessCount = uniq(wrongGuess);
       
+      var guessCount = uniq(wrongGuess);
+
       userHTML.textContent = userChoice;
       //storing the fixed array with no duplicates 
-      guessedWordBankHTML.textContent = guessCount;
-      dashedWordHTML.textContent = dashes;
-      gameOverHTML.textContent = guessCount.length;
+      guessedWordBankHTML.textContent = guessCount.join(" ");
+
+      dashedWordHTML.textContent = dashes.join(" ");
+      
+      gameOverHTML.textContent = wrongChoice;
+
+      // document.location().reload(true);
 
       console.log(guessCount);
-      console.log("this is the amount of times you've gussed wrong: " + guessCount.length);
+      console.log("this is the amount of times you've gussed wrong: " + wrongChoice);
 
     }
   </script>
