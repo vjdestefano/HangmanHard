@@ -4,31 +4,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Hangman!</title>
 </head>
 
 <body>
+  <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-3">Hangman!</h1>
+        <p class="lead">Theme: Altered Carbon</p>
+      </div>
+    </div>
+    
+    
+  <div class="container">
+    <div class = "row">
+      <div id="game" class = "col-sm-6">
+        <!-- Element to hold user's guess -->
+        <h2>User's guess:
+          <span id="user-guess"></span>
+        </h2>
+        <h2>
+          <span id="dashedWord"></span>
+        </h2>
+      </div>
+      <div id = "wordBank" class="col-sm-6">
+        <h2> Guessed Letters:
+          <span id="guessedWordBank"></span>
+        </h2>
+    
+        <h2> Remaining Guesses:
+          <span id="countTillGameOver"></span>
+        </h2>
+      </div>
+    </div>
+    </div>
 
-  <div id="game">
-    <!-- Element to hold user's guess -->
-    <h2>User's guess:
-      <span id="user-guess"></span>
-    </h2>
-    <h2>
-      <span id="dashedWord"></span>
-    </h2>
-
-    <h2>
-      <span id="guessedWordBank"></span>
-    </h2>
-
-    <h2>
-      <span id="countTillGameOver"></span>
-    </h2>
   </div>
-  </div>
-
 
   <script type="text/javascript">
     // var myFarm = ["chickens", "pigs", "cows", "horses", "ostriches"];
@@ -113,17 +126,21 @@
     for (var i = 0; i < hiddenWordLength; i++) {
       dashes.push("_");
     }
-    // create a array the length of the hiddenword
+     // create a array the length of the hiddenword
     console.log(dashes);
+    
+    
+  dashedWordHTML.textContent = dashes.join(" ");
+   
 
     var hiddenWordKey = [];
     for (var i = 0; i < guessThis.length; i++) {
       hiddenWordKey.push(guessThis.charAt(i));
     }
-    dashedWordHTML.textContent = dashes.join(" ");
-    //gets the word guessed, breaks the word into letters than adds letters to an array
+     //gets the word guessed, breaks the word into letters than adds letters to an array
     console.log(hiddenWordKey);
     
+  
     
     
     document.onkeypress = function (event) {
@@ -154,7 +171,6 @@
         }
 
       }
-      userHTML.textContent = userChoice;
       
       var guessCount = uniq(wrongGuess);
 
