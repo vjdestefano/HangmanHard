@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Harder Loop</title>
+  <title>Hangman!</title>
 </head>
 
 <body>
@@ -52,7 +52,6 @@
 
     var restartGame = false;
     var guessesRemaining = 7;
-    var wrongGuess = false;
     var userChoice2;
     
 
@@ -64,7 +63,14 @@
          guessesRemaining--;
        }
     }
-    
+
+    function previousGuess (arr, userChoice){
+      var x = arr.includes(userChoice);
+       if(x === true){
+         guessesRemaining++;
+       }
+    }
+
     function newGame(bool){
       if(guessesRemaining === 0){
         alert("you have lost the game");
@@ -91,6 +97,7 @@
     console.log(hiddenWordLength);
     
     var testArray = ['this', 'that', 'this', 'these'];
+   
     var wrongGuess = [];
 
     function uniq(wrongGuess) {
@@ -123,10 +130,12 @@
       // capture user input
       var userChoice = event.key;
 
+
       console.log(userChoice);
       //logging what key is being pressed
       
       wrongGuessOrNot(hiddenWordKey, userChoice);
+      previousGuess(wrongGuess, userChoice);
       newGame();
 
       for (var i = 0; i < hiddenWordKey.length; i++) {
