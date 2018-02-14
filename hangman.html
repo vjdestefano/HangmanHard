@@ -51,29 +51,45 @@
     }
 
     var restartGame = false;
-    var wrongChoice = 0;
+    var guessesRemaining = 7;
+    var wrongGuess = false;
+    var userChoice2;
+    
+
+    function wrongGuessOrNot(arr, userChoice){
+       var x = arr.includes(userChoice);
+       if(x === true){
+         console.log("wrong guess is working");
+       }else{
+         guessesRemaining--;
+       }
+    }
     
     function newGame(bool){
-      if(restartGame === true){
-         var newRandomWord = Math.floor(Math.random() * hiddenWord.length);
-         randomWord = newRandomWord;
-         restartGame = false;
+      if(guessesRemaining === 0){
+        alert("you have lost the game");
+        location.reload(true);
       }
+      
     }
     var missedGuess = 0;
     var hiddenWord = ["test", "wordy", "hardmode"];
     //this is my word bank
     console.log(hiddenWord);
+    
     var randomWord = Math.floor(Math.random() * hiddenWord.length);
     //this will give me a random word from my word bank
     console.log(randomWord);
     //test to see index comes up
+    
     var guessThis = hiddenWord[randomWord];
     //takes a random array element from word bank
     console.log(guessThis);
+    
     var hiddenWordLength = guessThis.length;
     //returns the length of word chosen from the bank
     console.log(hiddenWordLength);
+    
     var testArray = ['this', 'that', 'this', 'these'];
     var wrongGuess = [];
 
@@ -100,12 +116,19 @@
     dashedWordHTML.textContent = dashes.join(" ");
     //gets the word guessed, breaks the word into letters than adds letters to an array
     console.log(hiddenWordKey);
+    
+    
+    
     document.onkeypress = function (event) {
       // capture user input
       var userChoice = event.key;
+
       console.log(userChoice);
       //logging what key is being pressed
       
+      wrongGuessOrNot(hiddenWordKey, userChoice);
+      newGame();
+
       for (var i = 0; i < hiddenWordKey.length; i++) {
         //this isnt showing up, try to figure out why it isnt iterating through the array
         if (hiddenWordKey[i][0] === userChoice) {
@@ -117,6 +140,10 @@
 
           dashedWordHTML.textContent = dashes.join(" ");
         }
+        if(userChoice === "="){
+          newGame();
+        }
+
       }
       userHTML.textContent = userChoice;
       
@@ -128,12 +155,12 @@
 
       dashedWordHTML.textContent = dashes.join(" ");
       
-      gameOverHTML.textContent = wrongChoice;
+      gameOverHTML.textContent = guessesRemaining;
 
       // document.location().reload(true);
 
       console.log(guessCount);
-      console.log("this is the amount of times you've gussed wrong: " + wrongChoice);
+      console.log("this is the amount of times you've gussed wrong: " + guessesRemaining);
 
     }
   </script>
