@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Hangman!</title>
 </head>
@@ -13,14 +15,13 @@
   <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-3">Hangman!</h1>
-        <p class="lead">Theme: Altered Carbon</p>
       </div>
     </div>
     
     
   <div class="container">
     <div class = "row">
-      <div id="game" class = "col-sm-6">
+      <div id="game" class = "col-sm-5">
         <!-- Element to hold user's guess -->
         <h2>User's guess:
           <span id="user-guess"></span>
@@ -29,7 +30,10 @@
           <span id="dashedWord"></span>
         </h2>
       </div>
-      <div id = "wordBank" class="col-sm-6">
+      <div id="spacer" class=" col-sm-2">
+        <!-- nothing here -->
+      </div>
+      <div id = "wordBank" class="col-sm-5">
         <h2> Guessed Letters:
           <span id="guessedWordBank"></span>
         </h2>
@@ -64,7 +68,7 @@
     }
 
     var restartGame = false;
-    var guessesRemaining = 7;
+    var guessesRemaining = 10;
     var userChoice2;
     
 
@@ -92,7 +96,7 @@
       
     }
     var missedGuess = 0;
-    var hiddenWord = ["test", "wordy", "hardmode"];
+    var hiddenWord = ["stack", "slagged", "carbon", "synthetic", "prostetic", "hangman", "mental", "torture"];
     //this is my word bank
     console.log(hiddenWord);
     
