@@ -4,6 +4,10 @@ body{
   font-family: 'Play', sans-serif;
   font-size: 16px;
   background-image: url(../images/AlteredCarbon-FINAL.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  
 }
 
 h2{
@@ -15,17 +19,19 @@ h2{
   color:#a6291b;
 }
 .jumbotron{
+  padding-top: 1%;
   font-family: 'Play', sans-serif;
   font-size: 32px;
   text-align: center;
   background-image: url(../images/carbonHeader2.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: 50% 0%;
+  background-position: 50% -5%;
   background-color: black; 
 }
 
 #wordBank, #game{
+  margin-left: 5%;
   padding-left: 5%;
   background:rgba(56, 232, 25, 0.25);
   width: 40%;
@@ -36,6 +42,6 @@ h2{
 }
 
 #spacer{
-  width: 5%;
+  width: 10%;
   padding-left: 5%;
 }
